@@ -50,8 +50,9 @@ class PoseWrangler(ui_window.UIWindow, form_class):
 
         #self.setCentralWidget(self.win)
 
-        if not cmds.pluginInfo('MayaUE4RBFPlugin2018', q=True, loaded=True):
-            cmds.loadPlugin('MayaUE4RBFPlugin2018')
+        rbf_plugin = 'MayaUE4RBFPlugin{}'.format(cmds.about(version=True))
+        if not cmds.pluginInfo(rbf_plugin, q=True, loaded=True):
+            cmds.loadPlugin(rbf_plugin)
 
         # refresh the driver cmd list
         self.load_drivers()
